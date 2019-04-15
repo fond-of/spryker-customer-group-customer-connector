@@ -17,6 +17,6 @@ class CustomerGroupCustomerConnectorFacade extends AbstractFacade implements Cus
      */
     public function expandCustomer(CustomerTransfer $customerTransfer): CustomerTransfer
     {
-        return $this->getFactory()->getCustomerExpander()->expand($customerTransfer);
+        return $this->getFactory()->createCustomerExpander()->expand($customerTransfer);
     }
 }
