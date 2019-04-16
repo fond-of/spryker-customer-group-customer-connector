@@ -1,14 +1,14 @@
 <?php
 
-namespace FondOfSpryker\Zed\CustomerGroupCustomerConnector\Communication\Plugin\Customer;
+namespace FondOfSpryker\Zed\CustomerGroupCustomerConnector\Communication\Plugin\CustomerB2b;
 
 use Codeception\Test\Unit;
 use FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\CustomerGroupCustomerConnectorFacade;
 
-class CustomerGroupCustomerTransferExpanderPluginTest extends Unit
+class CustomerGroupCustomerB2bHydrationPluginTest extends Unit
 {
     /**
-     * @var \FondOfSpryker\Zed\CustomerGroupCustomerConnector\Communication\Plugin\Customer\CustomerGroupCustomerTransferExpanderPlugin
+     * @var \FondOfSpryker\Zed\CustomerGroupCustomerConnector\Communication\Plugin\CustomerB2b\CustomerGroupCustomerB2bHydrationPlugin
      */
     protected $customerGroupCustomerTransferExpanderPlugin;
 
@@ -37,7 +37,7 @@ class CustomerGroupCustomerTransferExpanderPluginTest extends Unit
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->customerGroupCustomerTransferExpanderPlugin = new CustomerGroupCustomerTransferExpanderPlugin();
+        $this->customerGroupCustomerTransferExpanderPlugin = new CustomerGroupCustomerB2bHydrationPlugin();
 
         $this->customerGroupCustomerTransferExpanderPlugin->setFacade($this->customerGroupCustomerConnectorFacadeMock);
     }
@@ -48,11 +48,11 @@ class CustomerGroupCustomerTransferExpanderPluginTest extends Unit
     public function testExpandTransfer(): void
     {
         $this->customerGroupCustomerConnectorFacadeMock->expects($this->atLeastOnce())
-            ->method('expandCustomer')
+            ->method('hydrateCustomer')
             ->with($this->customerTransferMock)
             ->willReturn($this->customerTransferMock);
 
-        $customerTransfer = $this->customerGroupCustomerTransferExpanderPlugin->expandTransfer($this->customerTransferMock);
+        $customerTransfer = $this->customerGroupCustomerTransferExpanderPlugin->hydrate($this->customerTransferMock);
 
         $this->assertEquals(
             $this->customerTransferMock,

@@ -11,5 +11,5 @@ interface CustomerGroupCustomerConnectorFacadeInterface
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    public function expandCustomer(CustomerTransfer $customerTransfer): CustomerTransfer;
+    public function hydrateCustomer(CustomerTransfer $customerTransfer): CustomerTransfer;
 }

@@ -5,7 +5,7 @@ namespace FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\Expander;
 use FondOfSpryker\Zed\CustomerGroupCustomerConnector\Dependency\Facade\CustomerGroupCustomerConnectorToCustomerGroupFacadeInterface;
 use Generated\Shared\Transfer\CustomerTransfer;
 
-class CustomerExpander implements CustomerExpanderInterface
+class CustomerHydrator implements CustomerHydratorInterface
 {
     /**
      * @var \FondOfSpryker\Zed\CustomerGroupCustomerConnector\Dependency\Facade\CustomerGroupCustomerConnectorToCustomerGroupFacadeInterface
@@ -25,7 +25,7 @@ class CustomerExpander implements CustomerExpanderInterface
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    public function expand(CustomerTransfer $customerTransfer): CustomerTransfer
+    public function hydrate(CustomerTransfer $customerTransfer): CustomerTransfer
     {
         $idCustomer = $customerTransfer->getIdCustomer();
 

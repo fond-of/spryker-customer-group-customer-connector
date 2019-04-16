@@ -10,6 +10,7 @@
   ],
   "require": {
     "php": ">=7.1",
+    "fond-of-spryker/customer-b2b": "dev-master",
     "spryker/customer-group": "^2.4"
   },
   "require-dev": {

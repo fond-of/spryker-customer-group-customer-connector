@@ -3,7 +3,7 @@
 namespace FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business;
 
 use Codeception\Test\Unit;
-use FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\Expander\CustomerExpander;
+use FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\Expander\CustomerHydrator;
 use FondOfSpryker\Zed\CustomerGroupCustomerConnector\CustomerGroupCustomerConnectorDependencyProvider;
 use FondOfSpryker\Zed\CustomerGroupCustomerConnector\Dependency\Facade\CustomerGroupCustomerConnectorToCustomerGroupFacadeInterface;
 use Spryker\Zed\Kernel\Container;
@@ -60,8 +60,8 @@ class CustomerGroupCustomerConnectorBusinessFactoryTest extends Unit
             ->with(CustomerGroupCustomerConnectorDependencyProvider::FACADE_CUSTOMER_GROUP)
             ->willReturn($this->customerGroupFacadeMock);
 
-        $customerExpander = $this->customerGroupCustomerConnectorBusinessFactory->createCustomerExpander();
+        $customerExpander = $this->customerGroupCustomerConnectorBusinessFactory->createCustomerHydrator();
 
-        $this->assertInstanceOf(CustomerExpander::class, $customerExpander);
+        $this->assertInstanceOf(CustomerHydrator::class, $customerExpander);
     }
 }

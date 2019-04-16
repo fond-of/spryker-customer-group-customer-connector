@@ -2,8 +2,8 @@
 
 namespace FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business;
 
-use FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\Expander\CustomerExpander;
-use FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\Expander\CustomerExpanderInterface;
+use FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\Expander\CustomerHydrator;
+use FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\Expander\CustomerHydratorInterface;
 use FondOfSpryker\Zed\CustomerGroupCustomerConnector\CustomerGroupCustomerConnectorDependencyProvider;
 use FondOfSpryker\Zed\CustomerGroupCustomerConnector\Dependency\Facade\CustomerGroupCustomerConnectorToCustomerGroupFacadeInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
@@ -11,11 +11,11 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 class CustomerGroupCustomerConnectorBusinessFactory extends AbstractBusinessFactory
 {
     /**
-     * @return \FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\Expander\CustomerExpanderInterface
+     * @return \FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\Expander\CustomerHydratorInterface
      */
-    public function createCustomerExpander(): CustomerExpanderInterface
+    public function createCustomerHydrator(): CustomerHydratorInterface
     {
-        return new CustomerExpander(
+        return new CustomerHydrator(
             $this->getCustomerGroupFacade()
         );
     }

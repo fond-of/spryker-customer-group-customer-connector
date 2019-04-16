@@ -3,7 +3,7 @@
 namespace FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business;
 
 use Codeception\Test\Unit;
-use FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\Expander\CustomerExpanderInterface;
+use FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\Expander\CustomerHydratorInterface;
 
 class CustomerGroupCustomerConnectorFacadeTest extends Unit
 {
@@ -23,7 +23,7 @@ class CustomerGroupCustomerConnectorFacadeTest extends Unit
     protected $customerTransferMock;
 
     /**
-     * @var \FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\Expander\CustomerExpanderInterface|\PHPUnit\Framework\MockObject\MockObject
+     * @var \FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\Expander\CustomerHydratorInterface|\PHPUnit\Framework\MockObject\MockObject
      */
     protected $customerExpanderMock;
 
@@ -42,7 +42,7 @@ class CustomerGroupCustomerConnectorFacadeTest extends Unit
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->customerExpanderMock = $this->getMockBuilder(CustomerExpanderInterface::class)
+        $this->customerExpanderMock = $this->getMockBuilder(CustomerHydratorInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -54,18 +54,18 @@ class CustomerGroupCustomerConnectorFacadeTest extends Unit
     /**
      * @return void
      */
-    public function testExpandCustomer(): void
+    public function testHydrateCustomer(): void
     {
         $this->customerGroupCustomerConnectorBusinessFactoryMock->expects($this->atLeastOnce())
-            ->method('createCustomerExpander')
+            ->method('createCustomerHydrator')
             ->willReturn($this->customerExpanderMock);
 
         $this->customerExpanderMock->expects($this->atLeastOnce())
-            ->method('expand')
+            ->method('hydrate')
             ->with($this->customerTransferMock)
             ->willReturn($this->customerTransferMock);
 
-        $customerTransfer = $this->customerGroupCustomerConnectorFacade->expandCustomer($this->customerTransferMock);
+        $customerTransfer = $this->customerGroupCustomerConnectorFacade->hydrateCustomer($this->customerTransferMock);
 
         $this->assertEquals($this->customerTransferMock, $customerTransfer);
     }

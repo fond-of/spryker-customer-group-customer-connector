@@ -8,7 +8,7 @@ use FondOfSpryker\Zed\CustomerGroupCustomerConnector\Dependency\Facade\CustomerG
 class CustomerExpanderTest extends Unit
 {
     /**
-     * @var \FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\Expander\CustomerExpander
+     * @var \FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\Expander\CustomerHydrator
      */
     protected $customerExpander;
 
@@ -47,7 +47,7 @@ class CustomerExpanderTest extends Unit
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->customerExpander = new CustomerExpander($this->customerGroupFacadeMock);
+        $this->customerExpander = new CustomerHydrator($this->customerGroupFacadeMock);
     }
 
     /**
@@ -65,7 +65,7 @@ class CustomerExpanderTest extends Unit
         $this->customerTransferMock->expects($this->never())
             ->method('setCustomerGroupCollection');
 
-        $customerTransfer = $this->customerExpander->expand($this->customerTransferMock);
+        $customerTransfer = $this->customerExpander->hydrate($this->customerTransferMock);
 
         $this->assertEquals(
             $this->customerTransferMock,
@@ -93,7 +93,7 @@ class CustomerExpanderTest extends Unit
             ->method('setCustomerGroupCollection')
             ->with($this->customerGroupCollectionTransferMock);
 
-        $customerTransfer = $this->customerExpander->expand($this->customerTransferMock);
+        $customerTransfer = $this->customerExpander->hydrate($this->customerTransferMock);
 
         $this->assertEquals(
             $this->customerTransferMock,
