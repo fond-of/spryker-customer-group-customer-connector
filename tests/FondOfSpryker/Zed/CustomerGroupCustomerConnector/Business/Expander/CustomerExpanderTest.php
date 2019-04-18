@@ -4,6 +4,8 @@ namespace FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\Expander;
 
 use Codeception\Test\Unit;
 use FondOfSpryker\Zed\CustomerGroupCustomerConnector\Dependency\Facade\CustomerGroupCustomerConnectorToCustomerGroupFacadeInterface;
+use Generated\Shared\Transfer\CustomerGroupCollectionTransfer;
+use Generated\Shared\Transfer\CustomerTransfer;
 
 class CustomerExpanderTest extends Unit
 {
@@ -34,12 +36,12 @@ class CustomerExpanderTest extends Unit
     {
         parent::_before();
 
-        $this->customerTransferMock = $this->getMockBuilder('\\Generated\\Shared\\Transfer\\CustomerTransfer')
+        $this->customerTransferMock = $this->getMockBuilder(CustomerTransfer::class)
             ->disableOriginalConstructor()
             ->setMethods(['getIdCustomer', 'setCustomerGroupCollection'])
             ->getMock();
 
-        $this->customerGroupCollectionTransferMock = $this->getMockBuilder('\\Generated\\Shared\\Transfer\\CustomerGroupCollectionTransfer')
+        $this->customerGroupCollectionTransferMock = $this->getMockBuilder(CustomerGroupCollectionTransfer::class)
             ->disableOriginalConstructor()
             ->getMock();
 

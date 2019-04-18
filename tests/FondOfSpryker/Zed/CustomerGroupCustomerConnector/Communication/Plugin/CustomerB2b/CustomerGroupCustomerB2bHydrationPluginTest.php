@@ -4,6 +4,7 @@ namespace FondOfSpryker\Zed\CustomerGroupCustomerConnector\Communication\Plugin\
 
 use Codeception\Test\Unit;
 use FondOfSpryker\Zed\CustomerGroupCustomerConnector\Business\CustomerGroupCustomerConnectorFacade;
+use Generated\Shared\Transfer\CustomerTransfer;
 
 class CustomerGroupCustomerB2bHydrationPluginTest extends Unit
 {
@@ -29,7 +30,7 @@ class CustomerGroupCustomerB2bHydrationPluginTest extends Unit
     {
         parent::_before();
 
-        $this->customerTransferMock = $this->getMockBuilder('\\Generated\\Shared\\Transfer\\CustomerTransfer')
+        $this->customerTransferMock = $this->getMockBuilder(CustomerTransfer::class)
             ->disableOriginalConstructor()
             ->getMock();
 

@@ -3,6 +3,7 @@
 namespace FondOfSpryker\Zed\CustomerGroupCustomerConnector\Dependency\Facade;
 
 use Codeception\Test\Unit;
+use Generated\Shared\Transfer\CustomerGroupCollectionTransfer;
 use Spryker\Zed\CustomerGroup\Business\CustomerGroupFacadeInterface;
 
 class CustomerGroupCustomerConnectorToCustomerGroupFacadeBridgeTest extends Unit
@@ -33,7 +34,7 @@ class CustomerGroupCustomerConnectorToCustomerGroupFacadeBridgeTest extends Unit
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->customerGroupCollectionTransferMock = $this->getMockBuilder('\\Generated\\Shared\\Transfer\\CustomerGroupCollectionTransfer')
+        $this->customerGroupCollectionTransferMock = $this->getMockBuilder(CustomerGroupCollectionTransfer::class)
             ->disableOriginalConstructor()
             ->getMock();
 
