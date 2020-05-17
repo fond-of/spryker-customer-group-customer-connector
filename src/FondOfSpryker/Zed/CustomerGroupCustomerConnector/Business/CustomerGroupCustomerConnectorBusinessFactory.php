@@ -21,8 +21,6 @@ class CustomerGroupCustomerConnectorBusinessFactory extends AbstractBusinessFact
     }
 
     /**
-     * @throws
-     *
      * @return \FondOfSpryker\Zed\CustomerGroupCustomerConnector\Dependency\Facade\CustomerGroupCustomerConnectorToCustomerGroupFacadeInterface
      */
     protected function getCustomerGroupFacade(): CustomerGroupCustomerConnectorToCustomerGroupFacadeInterface
